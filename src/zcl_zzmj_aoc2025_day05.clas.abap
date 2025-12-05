@@ -61,15 +61,12 @@ CLASS zcl_zzmj_aoc2025_day05 IMPLEMENTATION.
       LOOP AT ranges ASSIGNING FIELD-SYMBOL(<range2>) FROM tabix1 + 1.
         DATA(tabix2) = sy-tabix.
 
-        IF <range2>-to <= <range1>-to.
-          " Range 2 is totally contained in range 1, so range 2 can be removed
-          DELETE ranges INDEX tabix2.
-        ELSEIF <range2>-from <= <range1>-to.
-          " Range 2 is longer than range 1, so extend range 1 and remove range 2
-          <range1>-to = <range2>-to.
+        IF <range2>-from <= <range1>-to.
+          " These ranges overlap. Extend range 1 if needed, and remove range 2
+          <range1>-to = nmax( val1 = <range1>-to val2 = <range2>-to ).
           DELETE ranges INDEX tabix2.
         ELSE.
-          " The next range doesn't overlap, so we don't have to continue...
+          " The next range doesn't overlap, so break inner loop
           EXIT.
         ENDIF.
       ENDLOOP.
