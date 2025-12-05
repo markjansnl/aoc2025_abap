@@ -4,8 +4,8 @@ CLASS zcl_zzmj_aoc2025_day05 DEFINITION
   CREATE PUBLIC .
 
   PUBLIC SECTION.
-
     INTERFACES if_oo_adt_classrun .
+
   PROTECTED SECTION.
   PRIVATE SECTION.
 ENDCLASS.
@@ -68,6 +68,9 @@ CLASS zcl_zzmj_aoc2025_day05 IMPLEMENTATION.
           " Range 2 is longer than range 1, so extend range 1 and remove range 2
           <range1>-to = <range2>-to.
           DELETE ranges INDEX tabix2.
+        ELSE.
+          " The next range doesn't overlap, so we don't have to continue...
+          EXIT.
         ENDIF.
       ENDLOOP.
     ENDLOOP.
