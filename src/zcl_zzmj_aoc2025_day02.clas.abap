@@ -16,10 +16,13 @@ CLASS zcl_zzmj_aoc2025_day02 IMPLEMENTATION.
   METHOD if_oo_adt_classrun~main.
 
     DATA:
+      t1 TYPE timestampl,
+      t2 TYPE timestampl,
       invalid_ids_part1 TYPE HASHED TABLE OF int8 WITH UNIQUE KEY table_line,
       invalid_ids_part2 TYPE HASHED TABLE OF int8 WITH UNIQUE KEY table_line.
 
-    GET TIME STAMP FIELD DATA(t1).
+    " Get the time stamp so we can measure execution time
+    GET TIME STAMP FIELD t1.
 
     " Decide which input to use
     FINAL(input) = lcl_input=>example.
@@ -82,9 +85,6 @@ CLASS zcl_zzmj_aoc2025_day02 IMPLEMENTATION.
 
     ENDLOOP.
 
-    GET TIME STAMP FIELD DATA(t2).
-    out->write( |Execution took { t2 - t1 } seconds| ).
-
     " Write the result
     out->write( |Part 1: { REDUCE int8( INIT sum = CONV int8( 0 )
                                          FOR <invalid_id_part1> IN invalid_ids_part1
@@ -92,6 +92,10 @@ CLASS zcl_zzmj_aoc2025_day02 IMPLEMENTATION.
     out->write( |Part 2: { REDUCE int8( INIT sum = CONV int8( 0 )
                                          FOR <invalid_id_part2> IN invalid_ids_part2
                                         NEXT sum += <invalid_id_part2> ) }| ).
+
+    " Get the time stamp again and write execution time to output
+    GET TIME STAMP FIELD t2.
+    out->write( |Execution took { t2 - t1 } seconds| ).
 
   ENDMETHOD.
 ENDCLASS.

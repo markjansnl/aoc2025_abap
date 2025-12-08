@@ -15,6 +15,13 @@ ENDCLASS.
 CLASS zcl_zzmj_aoc2025_day01 IMPLEMENTATION.
   METHOD if_oo_adt_classrun~main.
 
+    DATA:
+      t1 TYPE timestampl,
+      t2 TYPE timestampl.
+
+    " Get the time stamp so we can measure execution time
+    GET TIME STAMP FIELD t1.
+
     " Decide which input to use
     FINAL(input) = lcl_input=>example.
 *    FINAL(input) = zcl_zzmj_aoc2025_inputs=>day01.
@@ -40,6 +47,10 @@ CLASS zcl_zzmj_aoc2025_day01 IMPLEMENTATION.
     " Write the output to the console
     out->write( |Part 1: { part1 }| ).
     out->write( |Part 2: { part2 }| ).
+
+    " Get the time stamp again and write execution time to output
+    GET TIME STAMP FIELD t2.
+    out->write( |Execution took { t2 - t1 } seconds| ).
 
   ENDMETHOD.
 ENDCLASS.

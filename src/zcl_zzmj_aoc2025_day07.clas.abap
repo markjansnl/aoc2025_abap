@@ -15,8 +15,12 @@ ENDCLASS.
 CLASS zcl_zzmj_aoc2025_day07 IMPLEMENTATION.
   METHOD if_oo_adt_classrun~main.
 
+    DATA:
+      t1 TYPE timestampl,
+      t2 TYPE timestampl.
+
     " Get the time stamp so we can measure execution time
-    GET TIME STAMP FIELD DATA(t1).
+    GET TIME STAMP FIELD t1.
 
     " Decide which input to use
     FINAL(input) = lcl_input=>example.
@@ -72,7 +76,7 @@ CLASS zcl_zzmj_aoc2025_day07 IMPLEMENTATION.
     " Part2: 3158 is too low
 
     " Get the time stamp again and write execution time to output
-    GET TIME STAMP FIELD DATA(t2).
+    GET TIME STAMP FIELD t2.
     out->write( |Execution took { t2 - t1 } seconds| ).
 
   ENDMETHOD.

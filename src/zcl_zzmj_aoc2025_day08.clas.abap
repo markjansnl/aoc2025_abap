@@ -35,12 +35,16 @@ ENDCLASS.
 CLASS zcl_zzmj_aoc2025_day08 IMPLEMENTATION.
   METHOD if_oo_adt_classrun~main.
 
+    DATA:
+      t1 TYPE timestampl,
+      t2 TYPE timestampl.
+
     " Get the time stamp so we can measure execution time
-    GET TIME STAMP FIELD DATA(t1).
+    GET TIME STAMP FIELD t1.
 
     " Decide which input to use
-    FINAL(input) = lcl_input=>example. FINAL(part1_pairs) = 10.
-*    FINAL(input) = zcl_zzmj_aoc2025_inputs=>day08. FINAL(part1_pairs) = 1000.
+*    FINAL(input) = lcl_input=>example. FINAL(part1_pairs) = 10.
+    FINAL(input) = zcl_zzmj_aoc2025_inputs=>day08. FINAL(part1_pairs) = 1000.
 
     " Parse input into table of junction boxes
     DATA(junction_boxes) = VALUE ty_junction_boxes( ).
@@ -138,7 +142,7 @@ CLASS zcl_zzmj_aoc2025_day08 IMPLEMENTATION.
     out->write( |Part 2: { part2 }| ).
 
     " Get the time stamp again and write execution time to output
-    GET TIME STAMP FIELD DATA(t2).
+    GET TIME STAMP FIELD t2.
     out->write( |Execution took { t2 - t1 } seconds| ).
 
   ENDMETHOD.

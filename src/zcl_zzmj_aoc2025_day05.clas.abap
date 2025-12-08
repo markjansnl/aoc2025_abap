@@ -23,12 +23,14 @@ CLASS zcl_zzmj_aoc2025_day05 IMPLEMENTATION.
       ty_ranges TYPE STANDARD TABLE OF ty_range WITH DEFAULT KEY.
 
     DATA:
+      t1 TYPE timestampl,
+      t2 TYPE timestampl,
       empty_line_found TYPE abap_bool,
       ranges           TYPE ty_ranges,
       part1            TYPE i.
 
     " Get the time stamp so we can measure execution time
-    GET TIME STAMP FIELD DATA(t1).
+    GET TIME STAMP FIELD t1.
 
     " Decide which input to use
     FINAL(input) = lcl_input=>example.
@@ -79,7 +81,7 @@ CLASS zcl_zzmj_aoc2025_day05 IMPLEMENTATION.
                                         NEXT sum += <range>-to - <range>-from + 1 ) }| ).
 
     " Get the time stamp again and write execution time to output
-    GET TIME STAMP FIELD DATA(t2).
+    GET TIME STAMP FIELD t2.
     out->write( |Execution took { t2 - t1 } seconds| ).
 
   ENDMETHOD.
