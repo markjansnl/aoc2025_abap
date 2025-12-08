@@ -114,9 +114,9 @@ CLASS zcl_zzmj_aoc2025_day08 IMPLEMENTATION.
       ELSEIF <circuit_a> IS ASSIGNED AND <circuit_b> IS ASSIGNED.
         " Both junction boxes are already in a circuit
         IF <circuit_a> <> <circuit_b>.
-          " If it is not the same circuit, add all the junction boxes from circuit B
-          " and add them to circuit A. Remove circuit B by setting count to 0
-          " and remove all lines with count 0
+          " If it is not the same circuit, take all the junction boxes from circuit B
+          " and add them to circuit A. Remove empty circuit B by setting count to 0
+          " and remove all circuits with count 0
           APPEND LINES OF <circuit_b>-junction_boxes TO <circuit_a>-junction_boxes.
           <circuit_a>-count += <circuit_b>-count.
           CLEAR <circuit_b>-count.
