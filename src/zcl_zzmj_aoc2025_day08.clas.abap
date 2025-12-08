@@ -43,8 +43,8 @@ CLASS zcl_zzmj_aoc2025_day08 IMPLEMENTATION.
     GET TIME STAMP FIELD t1.
 
     " Decide which input to use
-*    FINAL(input) = lcl_input=>example. FINAL(part1_pairs) = 10.
-    FINAL(input) = zcl_zzmj_aoc2025_inputs=>day08. FINAL(part1_pairs) = 1000.
+    FINAL(input) = lcl_input=>example. FINAL(part1_pairs) = 10.
+*    FINAL(input) = zcl_zzmj_aoc2025_inputs=>day08. FINAL(part1_pairs) = 1000.
 
     " Parse input into table of junction boxes
     DATA(junction_boxes) = VALUE ty_junction_boxes( ).
