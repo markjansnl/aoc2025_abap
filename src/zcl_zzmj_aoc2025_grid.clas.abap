@@ -25,7 +25,10 @@ CLASS zcl_zzmj_aoc2025_grid DEFINITION
       set
         IMPORTING
           position TYPE REF TO zcl_zzmj_aoc2025_position
-          value    TYPE cell.
+          value    TYPE cell,
+      print
+        IMPORTING
+          out TYPE REF TO if_oo_adt_classrun_out.
 
   PROTECTED SECTION.
   PRIVATE SECTION.
@@ -58,6 +61,12 @@ CLASS zcl_zzmj_aoc2025_grid IMPLEMENTATION.
       DATA(trail_offset) = position->x + 1.
       me->grid[ position->y + 1 ] = |{ line(position->x) }{ value }{ line+trail_offset }|.
     ENDIF.
+  ENDMETHOD.
+
+  METHOD print.
+    LOOP AT grid ASSIGNING FIELD-SYMBOL(<line>).
+      out->write( <line> ).
+    ENDLOOP.
   ENDMETHOD.
 
 ENDCLASS.
