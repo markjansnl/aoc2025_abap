@@ -23,9 +23,9 @@ ENDCLASS.
 CLASS zcl_zzmj_aoc2025_day04 IMPLEMENTATION.
   METHOD if_oo_adt_classrun~main.
 
-    data:
-      t1 type timestampl,
-      t2 type timestampl.
+    DATA:
+      t1 TYPE timestampl,
+      t2 TYPE timestampl.
 
     " Get the time stamp so we can measure execution time
     GET TIME STAMP FIELD t1.
