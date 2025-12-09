@@ -37,8 +37,8 @@ CLASS zcl_zzmj_aoc2025_day09 IMPLEMENTATION.
     GET TIME STAMP FIELD t1.
 
     " Decide which input to use
-*    FINAL(input) = lcl_input=>example.
-    FINAL(input) = zcl_zzmj_aoc2025_inputs=>day09.
+    FINAL(input) = lcl_input=>example.
+*    FINAL(input) = zcl_zzmj_aoc2025_inputs=>day09.
 
     " Parse input into table of red tiles
     DATA(red_tiles) = VALUE ty_red_tiles( ).
