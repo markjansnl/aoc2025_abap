@@ -33,7 +33,11 @@ CLASS zcl_zzmj_aoc2025_position DEFINITION
       left
         RETURNING VALUE(r) TYPE REF TO zcl_zzmj_aoc2025_position,
       right
-        RETURNING VALUE(r) TYPE REF TO zcl_zzmj_aoc2025_position.
+        RETURNING VALUE(r) TYPE REF TO zcl_zzmj_aoc2025_position,
+      equals
+        IMPORTING
+                  rhs      TYPE REF TO zcl_zzmj_aoc2025_position
+        RETURNING VALUE(r) TYPE abap_bool.
 
 
   PROTECTED SECTION.
@@ -75,6 +79,10 @@ CLASS zcl_zzmj_aoc2025_position IMPLEMENTATION.
 
   METHOD right.
     RETURN move( direction_right ).
+  ENDMETHOD.
+
+  METHOD equals.
+    RETURN COND #( WHEN me->x = rhs->x AND me->y = rhs->y THEN abap_true ELSE abap_false ).
   ENDMETHOD.
 
 ENDCLASS.
